@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       * ┌───┬───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┬───┐
       * │ * │ ! │ @ │ { │ } │ = │       │   │ < │ > │   │   │   │
       * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
-      * │   │   │ " │ ( │ ) │ - │       │ | │ & │ ; │   │   │   │
+      * │   │   │ " │ ( │ ) │ - │       │ ; │ / │ \ │ | │ & │   │
       * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
       * │   │ % │ # │ [ │ ] │ _ │       │   │   │   │   │   │   │
       * └───┴───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┴───┘
@@ -47,16 +47,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                       └───┘   └───┘
       */
     [_SIGN] = LAYOUT_split_3x6_3(
-        SE_ASTR, KC_EXLM, SE_AT,   LALT(S(SE_8)), LALT(S(SE_9)), S(SE_0),                     KC_NO,  KC_GRV,     KC_TILD, KC_NO,    KC_NO, KC_NO,
-        KC_NO,   KC_NO,   KC_AT,   KC_ASTR,       KC_LPRN,       SE_MINS,                     KC_LEFT,  KC_DOWN,  KC_UP,   KC_RIGHT, KC_NO, KC_NO,
-        KC_NO,   KC_PERC, KC_HASH, LALT(SE_8),    LALT(SE_9),    SE_UNDS,                     KC_NO,  LALT(SE_7), SE_AMPR,  KC_SCLN,  KC_NO, KC_NO,
+        SE_ASTR, KC_EXLM, SE_AT,   LALT(S(SE_8)), LALT(S(SE_9)), S(SE_0),                     KC_NO,      KC_GRV,  KC_TILD,       KC_NO,      KC_NO,   KC_NO,
+        KC_NO,   KC_NO,   KC_AT,   KC_ASTR,       KC_LPRN,       SE_MINS,                     S(KC_COMM), S(SE_7), LALT(S(SE_7)), LALT(SE_7), SE_AMPR, KC_NO,
+        KC_NO,   KC_PERC, KC_HASH, LALT(SE_8),    LALT(SE_9),    SE_UNDS,                     KC_NO,      KC_NO,   KC_NO,         KC_NO,      KC_NO,   KC_NO,
                                                   KC_LGUI,       KC_BSPC, KC_ENT,     KC_NO,  KC_TAB, S(SE_0)
     ),
      /*
       * ┌───┬───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┬───┐
       * │   │ * │ 7 │ 8 │ 9 │ - │       │   │   │   │   │   │   │
       * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
-      * │   │ / │ 4 │ 5 │ 6 │ + │       │   │   │   │   │   │   │
+      * │   │ / │ 4 │ 5 │ 6 │ + │       │Lft│Up │Dwn│Rgt│   │   │
       * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
       * │   │ 0 │ 1 │ 2 │ 3 │TAB│       │   │   │   │   │   │   │
       * └───┴───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┴───┘
@@ -67,9 +67,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                       └───┘   └───┘
       */
     [_NUM] = LAYOUT_split_3x6_3(
-        KC_NO, KC_PIPE, KC_7,    KC_8,    KC_9,    SE_MINS,                       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-        KC_NO, S(SE_7), KC_4,    KC_5,    KC_6,    KC_MINS,                      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-        KC_NO, KC_0,    KC_1,    KC_2,    KC_3,    KC_TAB,                       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_NO, KC_PIPE, KC_7,    KC_8,    KC_9,    SE_MINS,                      KC_NO,   KC_NO,   KC_NO, KC_NO,    KC_NO, KC_NO,
+        KC_NO, S(SE_7), KC_4,    KC_5,    KC_6,    KC_MINS,                      KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, KC_NO, KC_NO,
+        KC_NO, KC_0,    KC_1,    KC_2,    KC_3,    KC_TAB,                       KC_NO,   KC_NO,   KC_NO, KC_NO,    KC_NO, KC_NO,
                                             KC_BSPC, KC_ENT, KC_NO ,      KC_NO, KC_NO, KC_NO 
     )
 };
