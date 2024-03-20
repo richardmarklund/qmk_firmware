@@ -21,9 +21,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       * └───┴───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┴───┘
       *               ┌───┐                   ┌───┐
       *               │TAB├───┐           ┌───┤ = │
-      *               └───┤GUI├───┐   ┌───┤Opt├───┘
-      *                   └───┤Ent│   │Spc├───┘
-      *                       │Num├───┤Sgn│
+      *               └───┤BSP├───┐   ┌───┤Opt├───┘
+      *                   |GUI|Ent│   │Spc│   |
+      *                   └───┤Num├───┤Sgn├───┘
       *                       └───┘   └───┘
       */                        
     [_QWERTY] = LAYOUT_split_3x6_3(
@@ -44,14 +44,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *               ┌───┐                   ┌───┐
       *               │GUI├───┐           ┌───┤ = │
       *               └───┤Bsp├───┐   ┌───┤TAB├───┘
-      *                   └───┤Ent│   │   ├───┘
+      *                   └───┤ $ │   │   ├───┘
       *                       └───┘   └───┘
       */
     [_SIGN] = LAYOUT_split_3x6_3(
         KC_NO, KC_EXLM, SE_AT,   LALT(S(SE_8)), LALT(S(SE_9)), S(SE_0),                     KC_NO,      KC_GRV,  KC_TILD,       KC_NO,      KC_NO,   KC_NO,
         KC_NO, SE_ASTR, KC_AT,   KC_ASTR,       KC_LPRN,       SE_MINS,                     S(KC_COMM), S(SE_7), LALT(S(SE_7)), LALT(SE_7), SE_AMPR, KC_NO,
         KC_NO, KC_PERC, KC_HASH, LALT(SE_8),    LALT(SE_9),    SE_UNDS,                     KC_NO,      KC_NO,   KC_NO,         KC_NO,      KC_NO,   KC_NO,
-                                                KC_LGUI,       KC_BSPC, KC_ENT,     KC_NO,  KC_TAB, S(SE_0)
+                                                KC_LGUI,       KC_BSPC, LALT(SE_4),     KC_NO,  KC_TAB, S(SE_0)
     ),
      /*
       * ┌───┬───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┬───┐
