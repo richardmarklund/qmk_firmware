@@ -9,19 +9,65 @@
         _NUM,
         _SIGN,
     };
+
+    enum combo_events {
+      SIGNONESHOT,
+      SIGNTOGGLE,
+      NUMONESHOT,
+      NUMTOGGLE
+    };
+
     const uint16_t PROGMEM one_shot_sign_combo[] = {KC_U, KC_I, COMBO_END};
-    const uint16_t PROGMEM sign_combo[] = {KC_M, KC_COMM, COMBO_END};
     const uint16_t PROGMEM one_shot_num_combo[] = {KC_Y, KC_U, COMBO_END};
     const uint16_t PROGMEM num_combo[] = {KC_N, KC_M, COMBO_END};
-    const uint16_t PROGMEM f1_combo[] = {KC_F, KC_G, COMBO_END};
+    const uint16_t PROGMEM sign_combo[] = {KC_M, KC_COMM, COMBO_END};
 
-        combo_t key_combos[] = {
-            COMBO(one_shot_sign_combo, OSL(_SIGN)),
-            COMBO(sign_combo, TG(_SIGN)),
-            COMBO(one_shot_num_combo, OSL(_NUM)),
-            COMBO(num_combo, TG(_NUM)),
-            COMBO(f1_combo, TG(_SIGN)),
-        };
+    combo_t key_combos[] = {
+       [SIGNONESHOT] = COMBO_ACTION(one_shot_sign_combo),
+       [SIGNTOGGLE] = COMBO_ACTION(sign_combo),
+       [NUMTOGGLE] = COMBO_ACTION(num_combo),
+       [NUMONESHOT] = COMBO_ACTION(one_shot_num_combo),
+    };
+
+    void process_combo_event(uint16_t combo_index, bool pressed) {
+      switch(combo_index) {
+        case SIGNTOGGLE:
+          if (pressed) {
+            tap_code16(HYPR(KC_D));
+            layer_invert(_SIGN);
+          }
+          break;
+        case NUMTOGGLE:
+          if (pressed) {
+            tap_code16(HYPR(KC_F));
+            layer_invert(_NUM);
+          }
+          break;
+        case NUMONESHOT:
+          if (pressed) {
+            set_oneshot_layer(_NUM, ONESHOT_START);
+            clear_oneshot_layer_state(ONESHOT_PRESSED);
+          }
+          break;
+        case SIGNONESHOT:
+          if (pressed) {
+            set_oneshot_layer(_SIGN, ONESHOT_START);
+            clear_oneshot_layer_state(ONESHOT_PRESSED);
+          }
+          break;
+      }
+    }
+    void oneshot_layer_changed_user(uint8_t layer) {
+      if (layer == _NUM) {
+            tap_code16(HYPR(KC_F));
+      }
+      if (layer == _SIGN) {
+            tap_code16(HYPR(KC_D));
+      }
+      if (!layer) {
+            tap_code16(HYPR(KC_G));
+      }
+    }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /*
