@@ -14,19 +14,25 @@
       SIGNONESHOT,
       SIGNTOGGLE,
       NUMONESHOT,
-      NUMTOGGLE
+      NUMTOGGLE,
+      F2ONESHOT,
+      F3ONESHOT
     };
 
     const uint16_t PROGMEM one_shot_sign_combo[] = {KC_U, KC_I, COMBO_END};
     const uint16_t PROGMEM one_shot_num_combo[] = {KC_Y, KC_U, COMBO_END};
     const uint16_t PROGMEM num_combo[] = {KC_N, KC_M, COMBO_END};
     const uint16_t PROGMEM sign_combo[] = {KC_M, KC_COMM, COMBO_END};
+    const uint16_t PROGMEM one_shot_f2[] = {KC_H, KC_J, COMBO_END};
+    const uint16_t PROGMEM one_shot_f3[] = {KC_J, KC_K, COMBO_END};
 
     combo_t key_combos[] = {
        [SIGNONESHOT] = COMBO_ACTION(one_shot_sign_combo),
        [SIGNTOGGLE] = COMBO_ACTION(sign_combo),
        [NUMTOGGLE] = COMBO_ACTION(num_combo),
        [NUMONESHOT] = COMBO_ACTION(one_shot_num_combo),
+       [F2ONESHOT] = COMBO_ACTION(one_shot_f2),
+       [F3ONESHOT] = COMBO_ACTION(one_shot_f3),
     };
 
     void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -53,6 +59,16 @@
           if (pressed) {
             set_oneshot_layer(_SIGN, ONESHOT_START);
             clear_oneshot_layer_state(ONESHOT_PRESSED);
+          }
+          break;
+        case F2ONESHOT:
+          if (pressed) {
+            tap_code16(KC_F2);
+          }
+          break;
+        case F3ONESHOT:
+          if (pressed) {
+            tap_code16(KC_F3);
           }
           break;
       }
@@ -89,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,         KC_Q,      KC_W,    KC_E,    KC_R,    KC_T,                                                      KC_Y,        KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC ,
         KC_LSFT,       KC_A,      KC_S,    KC_D,    KC_F,    KC_G,                                                      KC_H,        KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         KC_LCTL,        KC_Z,      KC_X,    KC_C,    KC_V,    KC_B,                                                      KC_N,        KC_M,    KC_COMM, KC_DOT,  KC_BSLS, KC_MINS,
-                                            KC_TAB,  LGUI_T(KC_BSPC), KC_ENT,                                    KC_SPC, LALT_T(KC_NUM_LOCK),KC_F1
+                                            KC_TAB,  LGUI_T(KC_BSPC), KC_ENT,                                    KC_SPC, LALT_T(KC_F4),KC_F1
     ),
      /*
       * ┌───┬───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┬───┐
